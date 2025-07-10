@@ -1,22 +1,22 @@
 <h2>Productos en el carrito</h2>
-<ul>
-  <li *ngFor="let item of carrito">
-    {{ item.title }} - x{{ item.cantidad }} - ${{ item.price * item.cantidad | number:'1.2-2' }}
-  </li>
-</ul>
-<p><strong>Total:</strong> ${{ total | number:'1.2-2' }}</p>
 
-<h3>Datos de envío</h3>
-<form>
-  <input type="text" placeholder="Nombre" [(ngModel)]="nombre" name="nombre" required />
-  <input type="text" placeholder="Apellido" [(ngModel)]="apellido" name="apellido" required />
-  <input type="text" placeholder="Dirección" [(ngModel)]="direccion" name="direccion" required />
-  <input type="text" placeholder="CP" [(ngModel)]="cp" name="cp" required />
-  <input type="text" placeholder="Teléfono" [(ngModel)]="telefono" name="telefono" required />
-  <button type="button" (click)="aceptar()">Aceptar</button>
-</form>
+<div *ngFor="let item of carrito">
+  {{ item.title }} x{{ item.cantidad }} - ${{ item.price * item.cantidad | number:'1.2-2' }}
+</div>
 
-<button class="back-button" (click)="volverInicio()">Volver al inicio</button>
+<h3>Total: ${{ total | number:'1.2-2' }}</h3>
+
+<h4>Datos de envío</h4>
+<input type="text" placeholder="Nombre" [(ngModel)]="nombre" />
+<input type="text" placeholder="Apellido" [(ngModel)]="apellido" />
+<input type="text" placeholder="Dirección" [(ngModel)]="direccion" />
+<input type="text" placeholder="CP" [(ngModel)]="cp" />
+<input type="text" placeholder="Teléfono" [(ngModel)]="telefono" />
+
+<button class="btn btn-success" (click)="irAPago()">Aceptar</button>
+<br /><br />
+<button class="btn btn-secondary" (click)="volverAlInicio()">Volver al inicio</button>
+
 
 
 

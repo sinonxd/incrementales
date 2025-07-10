@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CartService } from '../services/cart.service';
-import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-basket',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './basket.component.html',
   styleUrls: ['./basket.component.css']
 })
-export class BasketComponent implements OnInit {
+export class BasketComponent {
   carrito: any[] = [];
   total = 0;
+
 
   nombre = '';
   apellido = '';
@@ -21,24 +21,25 @@ export class BasketComponent implements OnInit {
   cp = '';
   telefono = '';
 
-  constructor(private cartService: CartService, private router: Router) {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
-    this.cartService.carrito$.subscribe((productos) => {
-      this.carrito = productos;
-      this.total = productos.reduce((sum, item) => sum + item.price * item.cantidad, 0);
-    });
+    const carritoGuardado = localStorage.getItem('carrito');
+    if (carritoGuardado) {
+      this.carrito = JSON.parse(carritoGuardado);
+      this.total = this.carrito.reduce((sum, prod) => sum + prod.price * prod.cantidad, 0);
+    }
   }
 
-  aceptar() {
-    alert('Pedido realizado con éxito');
-    this.cartService.limpiarCarrito();
+  irAPago() {
+    this.router.navigate(['/payment']);
   }
 
-  volverInicio() {
+  volverAlInicio() {
     this.router.navigate(['/']);
   }
 }
+
 
 
 

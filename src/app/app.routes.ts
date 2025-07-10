@@ -11,7 +11,17 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'product/:id', component: ProductDetailsComponent },
   { path: 'basket', component: BasketComponent },
-  { path: '**', redirectTo: '' } 
+  {
+    path: 'payment',
+    loadComponent: () => import('./payment/payment.component').then(m => m.PaymentComponent)
+  },
+  {
+    path: 'confirmation',
+    loadComponent: () => import('./confirmation/confirmation.component').then(m => m.ConfirmationComponent)
+  },
+  { path: '**', redirectTo: '' }
 ];
+
+
 
 

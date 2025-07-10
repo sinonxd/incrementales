@@ -1,0 +1,24 @@
+<h2>Página de Pago</h2>
+<form>
+  <mat-form-field appearance="fill">
+    <mat-label>Número de tarjeta</mat-label>
+    <input matInput [(ngModel)]="tarjeta" name="tarjeta" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha de caducidad</mat-label>
+    <input matInput [(ngModel)]="caducidad" name="caducidad" placeholder="MM/AA" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>CVC</mat-label>
+    <input matInput [(ngModel)]="cvc" name="cvc" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="pagar()" [disabled]="cargando">Pagar</button>
+
+  <div *ngIf="cargando" class="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+</form>
+

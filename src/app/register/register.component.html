@@ -1,8 +1,24 @@
 <h2>Registro</h2>
 <form>
-  <input type="text" placeholder="Nombre" [(ngModel)]="nombre" name="nombre" required />
-  <input type="text" placeholder="Apellido" [(ngModel)]="apellido" name="apellido" required />
-  <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
-  <input type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required />
-  <button type="button" (click)="continuar()">Continuar</button>
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="nombre" name="nombre" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Apellido</mat-label>
+    <input matInput [(ngModel)]="apellido" name="apellido" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="email" name="email" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Contraseña</mat-label>
+    <input matInput type="password" [(ngModel)]="password" name="password" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="continuar()">Continuar</button>
 </form>
