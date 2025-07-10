@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -15,7 +16,11 @@ export class ProductDetailsComponent implements OnInit {
   producto: any = {};
   cantidad = 1;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private cartService: CartService
+  ) {}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -25,18 +30,11 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   anadirAlCarrito() {
-    const carrito = JSON.parse(sessionStorage.getItem('carrito') || '[]');
-    const index = carrito.findIndex((p: any) => p.id === this.producto.id);
-
-    if (index >= 0) {
-      carrito[index].cantidad += this.cantidad;
-    } else {
-      carrito.push({ ...this.producto, cantidad: this.cantidad });
-    }
-
-    sessionStorage.setItem('carrito', JSON.stringify(carrito));
+    this.cartService.agregarProducto(this.producto, this.cantidad);
     alert('Producto añadido al carrito');
   }
 }
+
+
 
 

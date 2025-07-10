@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { CartService } from '../services/cart.service';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-basket',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './basket.component.html',
   styleUrls: ['./basket.component.css']
 })
@@ -20,24 +21,26 @@ export class BasketComponent implements OnInit {
   cp = '';
   telefono = '';
 
-  constructor(private router: Router) {}
+  constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit() {
-    const datos = sessionStorage.getItem('carrito');
-    if (datos) {
-      this.carrito = JSON.parse(datos);
-      this.total = this.carrito.reduce((sum, item) => sum + item.price * item.cantidad, 0);
-    }
+    this.cartService.carrito$.subscribe((productos) => {
+      this.carrito = productos;
+      this.total = productos.reduce((sum, item) => sum + item.price * item.cantidad, 0);
+    });
   }
 
   aceptar() {
     alert('Pedido realizado con éxito');
+    this.cartService.limpiarCarrito();
   }
 
-  volverAlInicio() {
+  volverInicio() {
     this.router.navigate(['/']);
   }
 }
+
+
 
 
 
