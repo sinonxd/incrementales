@@ -1,0 +1,20 @@
+<div class="header">
+  <img src="assets/logo.png" alt="Logo" class="logo" />
+
+  <!-- Botones en escritorio -->
+  <div class="desktop-menu">
+    <button class="login-btn">Login</button>
+  </div>
+
+  <!-- Botón menú en móviles -->
+  <div class="mobile-menu-button">
+    <button (click)="toggleMenu()">☰ Menú</button>
+  </div>
+</div>
+
+<!-- Menú desplegable solo visible en móviles -->
+<div class="mobile-dropdown" *ngIf="mostrarMenu">
+  <button class="login-btn">Login</button>
+</div>
+
+
