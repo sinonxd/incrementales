@@ -1,2 +1,6 @@
-<h1>Bienvenido a nuestra tienda</h1>
+<h2>Bienvenido a la Tienda</h2>
+
+<app-search (filtro)="actualizarFiltro($event)"></app-search>
+<app-products [terminoFiltro]="terminoBusqueda"></app-products>
+
 

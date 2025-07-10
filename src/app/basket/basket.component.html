@@ -1,0 +1,27 @@
+<h2>Productos en el carrito</h2>
+<ul>
+  <li *ngFor="let item of carrito">
+    {{ item.title }} - x{{ item.cantidad }} - ${{ item.price * item.cantidad | number:'1.2-2' }}
+  </li>
+</ul>
+<p><strong>Total:</strong> ${{ total | number:'1.2-2' }}</p>
+
+<h3>Datos de envío</h3>
+<form>
+  <input type="text" placeholder="Nombre" [(ngModel)]="nombre" name="nombre" required />
+  <input type="text" placeholder="Apellido" [(ngModel)]="apellido" name="apellido" required />
+  <input type="text" placeholder="Dirección" [(ngModel)]="direccion" name="direccion" required />
+  <input type="text" placeholder="CP" [(ngModel)]="cp" name="cp" required />
+  <input type="text" placeholder="Teléfono" [(ngModel)]="telefono" name="telefono" required />
+  <button type="button" (click)="aceptar()">Aceptar</button>
+</form>
+
+
+<div class="volver-inicio" style="margin-top: 20px;">
+  <button (click)="volverAlInicio()">🏠 Volver al inicio</button>
+</div>
+
+
+
+
+

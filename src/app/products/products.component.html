@@ -1,0 +1,13 @@
+<div class="products-grid">
+  <a
+    *ngFor="let producto of productosFiltrados"
+    class="product-card"
+    [routerLink]="['/product', producto.id]"
+  >
+    <img [src]="producto.image" alt="Imagen del producto" />
+    <h3>{{ producto.title }}</h3>
+    <p>\${{ producto.price }}</p>
+  </a>
+</div>
+
+

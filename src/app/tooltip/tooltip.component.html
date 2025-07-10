@@ -1,19 +1,15 @@
-<div class="header">
-  <a [routerLink]="['/']">
-    <img src="assets/logo.png" alt="Logo" class="logo" />
-  </a>
-
-  <div class="desktop-menu">
-    <button class="login-btn" routerLink="/login">Login</button>
-  </div>
-
-  <div class="mobile-menu-button">
-    <button (click)="toggleMenu()">☰ Menú</button>
-  </div>
+<div class="desktop-menu">
+  <button class="login-btn" routerLink="/login">Login</button>
+  <button class="basket-btn" routerLink="/basket">
+    <img src="assets/basket.png" alt="Cesta" height="24" />
+  </button>
 </div>
+
 
 <div class="mobile-dropdown" *ngIf="mostrarMenu">
   <button class="login-btn" routerLink="/login">Login</button>
+  <button class="basket-btn" routerLink="/basket">🛒 Cesta</button>
 </div>
+
 
 
