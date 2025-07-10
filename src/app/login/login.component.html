@@ -1,0 +1,8 @@
+<h2>Login</h2>
+<form>
+  <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
+  <input type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required minlength="6" />
+  <button type="button" [disabled]="!camposValidos()" (click)="continuar()">Continuar</button>
+  <br />
+  <a routerLink="/register">¿No tienes cuenta? Regístrate aquí</a>
+</form>
