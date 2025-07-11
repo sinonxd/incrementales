@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-basket',
@@ -10,25 +11,25 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './basket.component.html',
   styleUrls: ['./basket.component.css']
 })
-export class BasketComponent {
+export class BasketComponent implements OnInit {
   carrito: any[] = [];
-  total = 0;
 
+  nombre: string = '';
+  apellido: string = '';
+  direccion: string = '';
+  cp: string = '';
+  telefono: string = '';
 
-  nombre = '';
-  apellido = '';
-  direccion = '';
-  cp = '';
-  telefono = '';
-
-  constructor(private router: Router) {}
+  constructor(private router: Router, private cartService: CartService) {}
 
   ngOnInit() {
-    const carritoGuardado = localStorage.getItem('carrito');
-    if (carritoGuardado) {
-      this.carrito = JSON.parse(carritoGuardado);
-      this.total = this.carrito.reduce((sum, prod) => sum + prod.price * prod.cantidad, 0);
-    }
+    this.cartService.carrito$.subscribe(data => {
+      this.carrito = data;
+    });
+  }
+
+  get total(): number {
+    return this.carrito.reduce((acc, item) => acc + item.price * item.cantidad, 0);
   }
 
   irAPago() {
@@ -39,6 +40,9 @@ export class BasketComponent {
     this.router.navigate(['/']);
   }
 }
+
+
+
 
 
 

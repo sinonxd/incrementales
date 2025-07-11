@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Camiseta básica",
+    "price": 10.99,
+    "description": "Camiseta de algodón básica.",
+    "category": "ropa",
+    "image": "https://fakestoreapi.com/img/camiseta1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Pantalón vaquero",
+    "price": 25.99,
+    "description": "Pantalón vaquero azul clásico.",
+    "category": "ropa",
+    "image": "https://fakestoreapi.com/img/pantalon1.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Shirt",
+    "price": 15.99,
+    "description": "Shirt for men.",
+    "category": "ropa",
+    "image": "https://fakestoreapi.com/img/shirt1.jpg"
+  }
+]
